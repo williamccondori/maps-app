@@ -7,7 +7,8 @@ const actions: ActionTree<IPlacesState, IState> = {
     getInitialLocation({ commit }) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            commit("setLngLat", position.coords);
+            const coords = [position.coords.latitude, position.coords.longitude];
+            commit("setLngLat", coords);
           },
           (error) => {
             console.error(error);
